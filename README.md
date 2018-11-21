@@ -2,7 +2,7 @@
 
 There are 2 folders associated with it 
 
-1. client for the frontent 
+I. client for the frontent 
 to setup client 
 
 1. cd client 
@@ -10,7 +10,7 @@ to setup client
 3. yarn start
 
 
-2. backEndApi fro the REST API
+II. backEndApi fro the REST API
 to setup backEndApi
 
 1. cd backEndApi
