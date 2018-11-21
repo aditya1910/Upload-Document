@@ -28,6 +28,7 @@ Implemented Functionalities are
 2. Service to keep track if the ingest is processed or not
 3. Implemented the aggeregation query as per the task
 4. Download the data in excel format (Did't get time to export it in pdf)
-5. Login sighup process for this using the expression session can use JWT but didn't get much time 
+5. Login sighup process using JWT tokens not very secured but just to get an idea how it works.  
+6. Middleware is implemented for checking if the request is a valid request or not. 
 
 
