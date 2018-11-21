@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import _ from 'underscore';
+import { setAuth, checkAuth } from './helper';
 //import moment from "moment";
 
 class Login extends Component {
@@ -12,7 +13,9 @@ class Login extends Component {
     this.doSignUp = this.doSignUp.bind(this);
     this.state = { pageType: 'login' };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    if (checkAuth()) this.props.history.push(`/uploadStatus`);
+  }
   changePage(pageType) {
     this.setState({ pageType: pageType });
   }
@@ -33,11 +36,11 @@ class Login extends Component {
       .then(bookingData => {
         if (bookingData.status === 200) {
           return bookingData.json();
-          //this.props.history.push("/profile");
         } else alert('Wrong Email password');
       })
       .then(myJson => {
         const userName = myJson.user.userName;
+        setAuth(myJson);
         this.props.history.push(`/uploadStatus`);
       })
       .catch(error => {

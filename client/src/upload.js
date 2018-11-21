@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import { getAccessToken, checkAuth } from './helper';
 class Upload extends Component {
   constructor() {
     super();
@@ -10,19 +10,28 @@ class Upload extends Component {
   }
   state = {
     uploadStatusArr: [],
-    interval:''
+    interval: '',
   };
   componentDidMount() {
-    this.fetchUploadStatus()
+    if (!checkAuth()) {
+      clearInterval(this.state.interval);
+      this.props.history.push(`/`);
+      return;
+    }
+    this.fetchUploadStatus();
     let interval = window.setInterval(() => {
       this.fetchUploadStatus();
     }, 3000);
-    this.setState({interval:interval})
+    this.setState({ interval: interval });
   }
 
   fetchUploadStatus(UploadName) {
-    clearInterval(this.state.interval)
-    fetch(`http://localhost:3003/api/v1/upload/status`)
+    fetch('http://localhost:3003/api/v1/upload/status', {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': getAccessToken(),
+      },
+    })
       .then(data => {
         return data.json();
       })
@@ -37,11 +46,15 @@ class Upload extends Component {
   }
 
   serchPlatform(event) {
+    clearInterval(this.state.interval);
     this.props.history.push(`/platform/${event.currentTarget.value}`);
   }
 
   render() {
-    const uploadObj = this.state.uploadStatusArr.map(element => {
+    const uploadArray = this.state.uploadStatusArr
+      ? this.state.uploadStatusArr
+      : [];
+    const uploadObj = uploadArray.map(element => {
       return <UploadStatus data={element} />;
     });
 

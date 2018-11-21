@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { getAccessToken, checkAuth } from './helper';
 
 class Platform extends Component {
   constructor() {
@@ -21,7 +22,14 @@ class Platform extends Component {
   }
 
   fetchUidRecords(platformName) {
-    fetch(`http://localhost:3003/api/v1/upload/${platformName}`)
+    if (!checkAuth()) return this.props.history.push(`/`);
+
+    fetch(`http://localhost:3003/api/v1/upload/${platformName}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': getAccessToken(),
+      },
+    })
       .then(data => {
         return data.json();
       })
