@@ -2,7 +2,7 @@
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const uuid = require('../app/helper/uuid');
-const MONGO_DB_DEV_URI = 'mongodb://localhost:27017/saavan';
+const MONGO_DB_DEV_URI = 'mongodb://localhost:27017/sampleDb';
 const SUPER_SECRET = 'dev_1234';
 
 module.exports = {

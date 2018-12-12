@@ -17,6 +17,14 @@ function setAccessToken(token) {
     document.cookie = `token=${token}`;
 }
 
+function setUserId(userId) {
+    document.cookie = `userId=${userId}`;
+}
+
+function getUserId() {
+    return getCookieByName('userId');
+}
+
 function getAccessToken() {
     return getCookieByName('token');
 }
@@ -25,6 +33,7 @@ function setAuth(auth) {
     console.log(auth);
     localStorage.setItem('isDisabled', false);
     setAccessToken(auth.token);
+    setUserId(auth.user.userId);
     return;
 }
 
@@ -40,7 +49,7 @@ function removeAuth() {
 }
 
 function checkAuth() {
-    console.log("hahahah")
+    console.log('hahahah');
     var auth = getAuth();
     if (auth.token) return true;
     else return false;
@@ -53,4 +62,5 @@ export {
     getAuth,
     removeAuth,
     checkAuth,
+    getUserId,
 };

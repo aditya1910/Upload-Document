@@ -38,6 +38,7 @@ function loginUser(req, res) {
           timeZone: userDetails.timeZone,
           userName: userDetails.userName,
           email: userDetails.email,
+          userId: userDetails._id,
         },
         token: token,
         isSessionActive: true,

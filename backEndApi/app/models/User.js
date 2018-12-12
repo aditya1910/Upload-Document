@@ -1,4 +1,4 @@
-// This is the user schema 
+// This is the user schema
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -20,6 +20,10 @@ const userSchema = new Schema(
     timeZone: {
       type: String,
       require: true,
+      default: null,
+    },
+    secret: {
+      type: String,
       default: null,
     },
   },

@@ -14,7 +14,7 @@ class Login extends Component {
     this.state = { pageType: 'login' };
   }
   componentDidMount() {
-    if (checkAuth()) this.props.history.push(`/uploadStatus`);
+    if (checkAuth()) this.props.history.push(`/document`);
   }
   changePage(pageType) {
     this.setState({ pageType: pageType });
@@ -33,15 +33,15 @@ class Login extends Component {
         password: password,
       }),
     })
-      .then(bookingData => {
-        if (bookingData.status === 200) {
-          return bookingData.json();
+      .then(userData => {
+        if (userData.status === 200) {
+          return userData.json();
         } else alert('Wrong Email password');
       })
       .then(myJson => {
         const userName = myJson.user.userName;
         setAuth(myJson);
-        this.props.history.push(`/uploadStatus`);
+        this.props.history.push(`/document`);
       })
       .catch(error => {
         console.log(error);

@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import platform from './platform';
 import upload from './upload';
+import document from './document';
 import Login from './login';
 import './App.css';
 
@@ -13,8 +14,13 @@ class App extends Component {
         <Router>
           <Switch>
             <Route key="login" exact path="/" component={Login} />
+            <Route key="document" exact path="/document" component={document} />
             <Route key="upload" exact path="/uploadStatus" component={upload} />
-            <Route key="search" path="/platform/:platform" component={platform} />
+            <Route
+              key="search"
+              path="/platform/:platform"
+              component={platform}
+            />
           </Switch>
         </Router>
       </div>
