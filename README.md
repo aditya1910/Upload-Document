@@ -26,9 +26,11 @@ Implemented Functionalities are
 
 1. Upload the csv file and it will ingest that file and store the data in databas
 2. Service to keep track if the ingest is processed or not
-3. Implemented the aggeregation query as per the task
-4. Download the data in excel format (Did't get time to export it in pdf)
-5. Login sighup process using JWT tokens not very secured but just to get an idea how it works.  
-6. Middleware is implemented for checking if the request is a valid request or not. 
+3. Login signup process using JWT tokens not very secured but just to get an idea how it works.  
+4. Middleware is implemented for checking if the request is a valid request or not. 
+5. Need to create the user before making any login 
+6. The document will be created if there is no docuemnt in db
+7. Access controle (Locks on the docuemnt and user won't be able to edit or change the lock unles the lock is released by the authorized user)
+
 
 
