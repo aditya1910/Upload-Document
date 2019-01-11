@@ -5,6 +5,7 @@ import platform from './platform';
 import upload from './upload';
 import document from './document';
 import Login from './login';
+import search from './search';
 import './App.css';
 
 class App extends Component {
@@ -13,9 +14,10 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route key="login" exact path="/" component={Login} />
+            <Route key="search" exact path="/" component={search} />
             <Route key="document" exact path="/document" component={document} />
             <Route key="upload" exact path="/uploadStatus" component={upload} />
+            <Route key="login" exact path="/login" component={Login} />
             <Route
               key="search"
               path="/platform/:platform"

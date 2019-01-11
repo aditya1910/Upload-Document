@@ -53,13 +53,17 @@ class UploadController {
           var csvStream = csv()
             .on('data', function(data) {
               const objectToInsert = {
-                userId: data[0] ? data[0] : '',
-                platform: data[1] ? data[1] : '',
+                // userId: data[0] ? data[0] : '',
+                // platform: data[1] ? data[1] : '',
+                firstName: data[0] ? data[0] : '',
+                middleName: data[1] ? data[1] : '',
+                lastName: data[2] ? data[2] : '',
+
               };
               Models.UserData.create(
                 objectToInsert,
                 (insertErr, insertResult) => {
-                  //console.log(insertErr, insertResult);
+                  console.log(insertErr, insertResult);
                 },
               );
             })

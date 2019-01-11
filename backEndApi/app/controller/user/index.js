@@ -42,9 +42,22 @@ class UserController {
       return res.status(200).json(result);
     });
   }
+
+  searchUser(req,res){
+    const params = {};
+    params.search = req.params.id;
+    const UserObj = new User();
+    UserObj.searchUser(params, (err, result) => {
+      if (err) return res.status(500).json(err);
+
+      return res.status(200).json(result);
+    });
+  }
+
 }
 const UserRoute = new UserController();
 
+router.get('/search/:id', UserRoute.searchUser);
 router.get('/', UserRoute.getAllUser);
 router.get('/:id', UserRoute.getUser);
 

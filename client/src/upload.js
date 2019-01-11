@@ -13,41 +13,41 @@ class Upload extends Component {
     interval: '',
   };
   componentDidMount() {
-    if (!checkAuth()) {
-      clearInterval(this.state.interval);
-      this.props.history.push(`/`);
-      return;
-    }
-    this.fetchUploadStatus();
-    let interval = window.setInterval(() => {
-      this.fetchUploadStatus();
-    }, 3000);
-    this.setState({ interval: interval });
+    // if (!checkAuth()) {
+    //   clearInterval(this.state.interval);
+    //   this.props.history.push(`/`);
+    //   return;
+    // }
+    // this.fetchUploadStatus();
+    // let interval = window.setInterval(() => {
+    //   this.fetchUploadStatus();
+    // }, 3000);
+    // this.setState({ interval: interval });
   }
 
   fetchUploadStatus(UploadName) {
-    fetch('http://localhost:3003/api/v1/upload/status', {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': getAccessToken(),
-      },
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(myJson => {
-        this.setState({
-          uploadStatusArr: myJson.data,
-        });
-      })
-      .catch(error => {
-        alert('No able to process this request try again');
-      });
+    // fetch('http://localhost:3003/api/v1/upload/status', {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'x-access-token': getAccessToken(),
+    //   },
+    // })
+    //   .then(data => {
+    //     return data.json();
+    //   })
+    //   .then(myJson => {
+    //     this.setState({
+    //       uploadStatusArr: myJson.data,
+    //     });
+    //   })
+    //   .catch(error => {
+    //     alert('No able to process this request try again');
+    //   });
   }
 
   serchPlatform(event) {
-    clearInterval(this.state.interval);
-    this.props.history.push(`/platform/${event.currentTarget.value}`);
+    // clearInterval(this.state.interval);
+    // this.props.history.push(`/platform/${event.currentTarget.value}`);
   }
 
   render() {
