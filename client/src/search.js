@@ -12,16 +12,6 @@ class Upload extends Component {
     interval: '',
   };
   componentDidMount() {
-    // if (!checkAuth()) {
-    //   clearInterval(this.state.interval);
-    //   this.props.history.push(`/`);
-    //   return;
-    // }
-    // this.fetchSearchData();
-    // let interval = window.setInterval(() => {
-    //   this.fetchUploadStatus();
-    // }, 3000);
-    // this.setState({ interval: interval });
   }
 
   fetchSearchData(event) {
@@ -35,7 +25,10 @@ class Upload extends Component {
       },
     )
       .then(data => {
-        return data.json();
+        if(data.status===200)
+          return data.json();
+
+        return [];
       })
       .then(myJson => {
         console.log(myJson);
